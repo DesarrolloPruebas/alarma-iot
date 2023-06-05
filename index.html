@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT - Panel de Control</title>
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: rgba(0, 0, 0, .9);
+            margin: 0;
+            color: #fff;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        header::after {
+            content: '';
+            height: 40vh;
+            width: 100%;
+            background-image: url(data:image/jpeg;base64,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);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: block;
+            filter: blur(10px);
+            -webkit-filter: blur(10px);
+        }
+
+        .header-content {
+            position: absolute;
+            z-index: 1;
+            top: 10%;
+            left: 50%;
+            margin-top: 15px;
+            margin-left: -145px;
+            margin-bottom: 100px;
+            text-align: center;
+        }
+
+        .title {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: auto;
+            overflow: hidden;
+            padding: 3rem 1rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+
+        .text-center {
+            text-align: center;
+            margin: auto;
+        }
+
+        .bg-light {
+            background: #fff;
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+            padding: 15px 32px;
+            font-size: 16px;
+            border-radius: 12px;
+            background-color: white;
+            border: 2px solid black;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .chart-service {
+            width: 40%;
+            margin: 0 auto;
+        }
+
+        canvas {
+            max-width: 100%;
+        }
+
+        @media(max-width: 560px) {
+            .header-content {
+                top: 5%;
+                margin-bottom: 5px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding-top: 15px;
+            }
+
+            h3 {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--Encabezado-->
+    <header>
+        <div class="header-content">
+            <h1 class="title">Alarma de Emergencia</h1>
+            <h2 class="subtitle">GAS - HUMO - MOVIMIENTO</h2>
+        </div>
+    </header>
+
+    <!--Panel de Control-->
+    <main>
+        <section class="status-service text-center">
+            <h2 class="subtitle">Panel de Control</h2>
+            <div class="text-center container">
+                <div class="grid-2">
+                    <div>
+                        <h3 class="subtitle" id="alarma">Estado de Alarma:</h3>
+                        <h3 class="subtitle" id="campo">Calidad del Aire Actual:</h3>
+                    </div>
+
+                    <div>
+                        <button>
+                            <a href="/encender">ON</a>
+                        </button>
+                        <button>
+                            <a href="/apagar">OFF</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-light">
+            <div class="chart-service">
+                <canvas class="chart" id="myChart" height="130" width="200"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <!--Backend-->
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.min.js"
+        integrity="sha512-dnUg2JxjlVoXHVdSMWDYm2Y5xcIrJg1N+juOuRi0yLVkku/g26rwHwysJDAMwahaDfRpr1AxFz43ktuMPr/l1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        const socket = io();
+        let contador = 0;
+        socket.on('arduino:data', function (datos) {
+            document.getElementById('campo').innerHTML = "Calidad del Aire Actual: " + Object.values(datos) + "ppm";
+
+            lineChart.data.labels.push(contador);
+            lineChart.data.datasets.forEach(dataset => {
+                dataset.data.push(datos.value);
+            });
+            contador++;
+            lineChart.update("none");
+        });
+
+        const ctx = document.getElementById('myChart');
+
+        const lineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                label: ["PPM"],
+                datasets: [{
+                    label: "Mediciones",
+                    data: [],
+                }]
+            },
+            options: {}
+        });
+
+        socket.on('arduino:alarma', function (datos) {
+            if(Object.values(datos) == "activar") {
+                document.getElementById('alarma').innerHTML = "Estado de Alarma: Activada";
+                document.getElementById('alarma').style.backgroundColor = '#d90909';
+            } else {
+                document.getElementById('alarma').innerHTML = "Estado de Alarma: Desactivada";
+                document.getElementById('alarma').style.backgroundColor = '#17deb7';
+            }
+        });
+    </script>
+</body>
+
+</html>
